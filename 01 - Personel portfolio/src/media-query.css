@@ -1,0 +1,198 @@
+/*max-width: 1024px*/
+
+
+@media (max-width: 1024px) {
+
+  .links{
+    font-size: 17px;
+  }
+
+  .intro-container {
+    grid-template-columns:450px;
+    justify-content: center;
+    row-gap: 20px;
+  }
+
+  .image-heroSvg{
+    width: 450px; 
+    height: auto;
+  }
+
+  .name{
+    font-size: 40px;
+   
+  }
+
+  .occupation{
+   font-size: 24px;
+
+  }
+
+  .motto{
+    font-size: 18px;
+   
+  }
+
+  .skillsCard-container{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-inner-section-container {
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: 60px;
+  }
+
+  .personal-image img{
+    width: 350px;
+    height: 350px;
+  }
+
+  .about-myself{
+ 
+   max-width: 500px;
+
+  }
+
+  .about-inner-container{
+  width: 425px;
+  }
+
+}
+
+/*max-width: 768px*/
+
+@media  (max-width: 768px) {
+  .navbar-container{
+    padding: 30px;
+  }
+
+  .links{
+    font-size: 16px;
+  }
+
+  .intro-container {
+    grid-template-columns:400px;
+    justify-content: center;
+    row-gap: 20px;
+  }
+
+  .image-heroSvg{
+    width: 400px; 
+    height: auto;
+  }
+
+  .name{
+    font-size: 38px;
+   
+  }
+
+  .occupation{
+   font-size: 22px;
+
+  }
+
+  .motto{
+    font-size: 18px;
+   
+  }
+
+  .skillsCard-container{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .about-inner-section-container {
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: 60px;
+  }
+
+  .personal-image img{
+    width: 300px;
+    height: 300px;
+  }
+
+  .about-myself{
+ 
+   max-width: 425px;
+
+  }
+
+  .about-inner-container{
+  width: 425px;
+  }
+}
+
+
+@media(max-width: 425px) {
+  .navbar-container{
+    column-gap:15px;
+    padding: 18px;
+  }
+
+  .links{
+    font-size: 14px;
+  }
+
+  .intro-container {
+    grid-template-columns:300px;
+    justify-content: center;
+    row-gap: 20px;
+  }
+
+  .image-heroSvg{
+    width: 300px; 
+    height: auto;
+  }
+
+  .name{
+    font-size: 35px;
+   
+  }
+
+  .occupation{
+   font-size: 22px;
+
+  }
+
+  .motto{
+    font-size: 16px;
+   
+  }
+
+  .skillsCard-container{
+    grid-template-columns: 1fr;
+  }
+
+  .skills-card{
+    min-height: 160px;
+  }
+
+  .about-inner-section-container {
+    grid-template-columns: 1fr;
+    row-gap: 60px;
+  }
+
+  .personal-image img{
+    width: 200px;
+    height: 200px;
+  }
+
+  .about-myself{
+ 
+   max-width: 425px;
+
+  }
+
+  .about-inner-container{
+  width: 425px;
+  }
+
+  .big-project-container, .small-project-container{
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+  }
+}
+
+
+
