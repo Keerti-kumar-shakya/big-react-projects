@@ -6,3 +6,4 @@ export {default as Orders} from './Orders';
 export {default as Error} from './Error';
 export {default as HomeLayout} from './HomeLayout';
 export {default as SingleProduct} from './SingleProduct';
+export {default as About} from './About';

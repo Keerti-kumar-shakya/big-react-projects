@@ -22,6 +22,10 @@ const Navbar = () => {
         Home
       </NavLink>
 
+      <NavLink className= 'link' to= 'about'>
+        About
+      </NavLink>
+
       <NavLink className= 'link' to= 'products'>
         Products
       </NavLink>
@@ -46,10 +50,12 @@ const Navbar = () => {
       </button>
       
       <div className="cart" style={{color: theme? 'white': 'black'}}>
+      <NavLink className= 'link' to= 'cart'>
         <IoCartOutline/>
         <div className="total-number-product">
           0
         </div>
+      </NavLink>
       </div>
      </article>
     </div>

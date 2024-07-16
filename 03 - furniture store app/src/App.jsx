@@ -3,7 +3,7 @@ import { useGlobalContext } from "./Context"
 
 
 //pages
-import { Cart, Checkout, Home, Orders, Products, Error, HomeLayout, SingleProduct } from "./pages";
+import { Cart, Checkout, Home, Orders, Products, Error, HomeLayout, SingleProduct, About } from "./pages";
 
 // components
 import { ErrorElement } from "./components";
@@ -22,6 +22,11 @@ const router = createBrowserRouter([
     {
       index: true,
       element: <Home/>,
+      errorElement: <ErrorElement/>
+    },
+    {
+      path: 'about',
+      element: <About/>,
       errorElement: <ErrorElement/>
     },
     {
