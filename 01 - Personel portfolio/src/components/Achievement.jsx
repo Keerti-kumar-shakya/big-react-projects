@@ -1,7 +1,7 @@
 
 const Achievement = () => {
   return (
-    <div>
+    <div className="achievement-section">
       Achievement
     </div>
   )

@@ -57,13 +57,11 @@
 /*********************Navbar section**************************/
 
 .home-section{
-  border: 1px solid black;
   background-color: #d1fae5;
 
 }
 
 .navbar-container{
-  border: 1px solid violet;
   display: flex;
   align-items: center;
   padding: 32px;
@@ -74,7 +72,6 @@
 }
 
 .header-container, .header-span-dev-par{
-  border: 1px solid red;
   font-size: 30px;
 }
 
@@ -83,7 +80,6 @@
 }
 
 .link-container{
-  border: 1px solid black;
   display: flex;
   column-gap: 12px;
 }
@@ -106,14 +102,12 @@ color: rgb(41, 175, 41)
 /*********************Heros section**************************/
 
 .heros-section{
-  border: 1px solid blue;
   background-color: #d1fae5;
   padding: 96px 0px;
 }
 
 .intro-container{
   padding: 0px 32px;
-  border: 1px solid red;
   display: grid;
   grid-template-columns: 600px 600px;
   justify-content: center;
@@ -146,7 +140,6 @@ color: rgb(41, 175, 41)
 }
 
 .introduction{
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -186,7 +179,6 @@ color: black;
 }
 
 .img-section{
- border: 1px solid black;
 }
 
 .image-heroSvg{
@@ -196,7 +188,6 @@ color: black;
 /*********************Skills section**************************/
 
 .skill-section{
-  border: 1px solid black;
   background-color: #f8fafc;
   padding: 80px 32px;
 
@@ -216,7 +207,6 @@ hr{
 /*********************SkillsCard section**************************/
 
 .skillsCard-container{
-  border: 1px solid black;
   padding: 64px 0px;
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -227,7 +217,6 @@ hr{
 }
 
 .skills-card{
-  border: 1px solid black;
   display: grid;
   height: 240px;
 }
@@ -250,7 +239,6 @@ margin-bottom: 20px;
 }
 
 .btn-paginate-container{
-  border: 1px solid black;
   display: flex;
  justify-content: center;
  column-gap: 10px;
@@ -267,7 +255,6 @@ transition: var(--transition);
 }
 
 .btn-skill:hover{
-  background-color: black;
   color: white;
 }
 .active-btn{
@@ -278,7 +265,7 @@ transition: var(--transition);
 /*********************about section**************************/
 
 .about-section{
-  border: 1px solid black;
+
   padding: 80px 0px;
 
 }
@@ -312,7 +299,6 @@ transition: var(--transition);
 }
 
 .about-myself{
-  border: 1px solid black;
  max-width: 550px;
 height: 100%;
 border-radius: 0.5rem;
@@ -349,17 +335,16 @@ padding-bottom: 20px;
 }
 
 .about-container{
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   column-gap: 20px;
-  height: 348px;
+  min-height: 348px;
+
 }
 
 .about-inner-container{
-  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -367,7 +352,6 @@ padding-bottom: 20px;
 }
 
 .btn-about-container{
-  border: 1px solid black;
   height: auto;
   width: 300px;
   height: auto;
@@ -385,7 +369,6 @@ padding-bottom: 20px;
 }
 
 .active-btn-about{
-  border-bottom: 2px solid black;
   background-color: lightgrey;
 }
 
@@ -396,31 +379,32 @@ padding-bottom: 20px;
 }
 
 .about-my-self{
-letter-spacing: 1px;
+letter-spacing: 0.5px;
 font-family: monospace;
 font-size: 16px;
-text-align: start;
+text-align: center;
 color: var(--clr-grey-4);
-width: 490px;
+min-width: 420px;
 }
 
 
 /*********************education section**************************/
 
 .education-container {
-
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 300px;
+  min-height: 348px;
+
 }
 
 .edu-btn-container{
 
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  column-gap: 10px;
+  gap: 10px;
 }
 
 .education-btn {
@@ -428,7 +412,7 @@ width: 490px;
   text-transform: capitalize;
   letter-spacing: 0.5px;
   background-color: rgba(248, 231, 205, 0.822);
-  border: 1px solid black;
+
   border-radius: 0.2rem;
   transition: 0.25s;
 }
@@ -479,12 +463,13 @@ width: 490px;
 
 /*********************Achievement section**************************/
 
-
+.achievement-section{
+height: 340px;
+}
 
 /*********************Projects section**************************/
 
 .project-section{
-  border: 1px solid black;
   padding: 80px 32px;
   background-color:#f8fafc;
 }

@@ -7,6 +7,7 @@
     font-size: 17px;
   }
 
+
   .intro-container {
     grid-template-columns:450px;
     justify-content: center;
@@ -67,6 +68,12 @@
     padding: 30px;
   }
 
+
+  .navbar-container{
+    column-gap:15px;
+    padding: 18px;
+  }
+
   .links{
     font-size: 16px;
   }
@@ -114,7 +121,7 @@
 
   .about-myself{
  
-   max-width: 425px;
+   max-width: 400px;
 
   }
 
@@ -125,10 +132,8 @@
 
 
 @media(max-width: 425px) {
-  .navbar-container{
-    column-gap:15px;
-    padding: 18px;
-  }
+
+
 
   .links{
     font-size: 14px;

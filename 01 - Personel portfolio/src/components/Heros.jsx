@@ -1,6 +1,6 @@
 import { FaGithubSquare, FaLinkedin, FaTwitterSquare } from 'react-icons/fa';
 import heroSvg from '../assets/hero.svg'
-import resume from '../assets/New+Web+Dev+Resources (1).pdf'
+import resume from '../assets/keerti_shakya_latest.pdf'
 
 const Heros = () => {
   return (
