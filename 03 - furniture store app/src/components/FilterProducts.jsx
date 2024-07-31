@@ -4,10 +4,10 @@ import { useGlobalContext } from "../Context"
 
 const FilterProducts = ({filter}) => {
 
-  const step = 1000;
-  const maxPrice = 100000;
+  const step = 10;
+  const maxPrice = 1000;
   
-  const {axiosData, handleSearch, handleCategory, handleCompany, handleShipping, filterAllData} = useGlobalContext();
+  const {axiosData, handleSearch, handleCategory, handleCompany, handleShipping, filterAllData, price, handleRange} = useGlobalContext();
   
   const productCategory = ['all', ...new Set(axiosData.map((product) => product.category))];
   
@@ -56,7 +56,23 @@ const FilterProducts = ({filter}) => {
        {/* input range */}
        <div className="search-input">
         <p className="search-heading">search product</p>
-        <input className="range-input" type="range" name="" id="" />
+
+        <div className="selecting-range">
+          <p className="select-para">Select Price</p>  
+          <p className="show-range">${price}</p>  
+        </div>
+
+        <input className="range-input" 
+        type="range" 
+        min={0}
+        max={maxPrice}
+        step={step}
+        onChange={handleRange}
+        />
+        <div className="range-para">
+          <p className="range-min">0</p>
+          <p className="range-max">$1000.00</p>
+        </div>
       </div>
 
       {/* input shipping */}
@@ -65,9 +81,6 @@ const FilterProducts = ({filter}) => {
         <input className="checkbox-input" 
         type="checkbox" 
         name="checkbox" 
-        min={0}
-        max={maxPrice}
-        step={step}
         onClick={handleShipping}
         />
       </div>
@@ -82,4 +95,4 @@ const FilterProducts = ({filter}) => {
   )
 }
 
-export default FilterProducts
+export default FilterProducts;

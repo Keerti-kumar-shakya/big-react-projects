@@ -13,12 +13,12 @@ const HomeLayout = () => {
 
   return (
     <>
-    <Navbar/>
-    <main className="home-layout-container" style={{transition: '0.5s', color: color}}>
-
-    {isPageLoading?
-    <Loading/> : <Outlet/> // outlet means Home page
-    }
+      <Navbar/>
+      <main className="home-layout-container" style={{transition: '0.5s', color: color}}>
+      
+      {isPageLoading?
+      <Loading/> : <Outlet/> // outlet means Home page
+      }
     </main>
     </>
   )

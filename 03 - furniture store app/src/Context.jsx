@@ -14,11 +14,14 @@ export const AppProvider = ({children}) => {
   const [theme, useTheme] = useState(false);
   const [axiosData, setAxiosData] = useState(initial_data)
   const [singleProduct, useSingleProduct] = useState(initial_data);
+  const [isLoading, setIsLoading] = useState(false);
 
   const request = async() => {
+    setIsLoading(true)
     try {
       const response = await axios.get(url);
       const data = response.data;
+      setIsLoading(false)
       setAxiosData(data)
     } catch (error) {
       console.log(error);
@@ -34,7 +37,9 @@ export const AppProvider = ({children}) => {
   const [search, useSearch] = useState(null);
   const [category, useCategory] = useState('all');
   const [company, useCompany] = useState('all');
+  const [price, usePrice] = useState(0);
   const [shipping, useShipping] = useState(false);
+
 
   
   const handleSearch = (e) => {
@@ -54,13 +59,19 @@ export const AppProvider = ({children}) => {
     const data = e.target.value;
     useCompany(data)
   }
+
+  const handleRange = (e) => {
+    //e.preventDefault()
+    const data = e.target.value;
+    usePrice(data)
+  }
   
   const handleShipping = () => {
     //e.preventDefault()    
     useShipping(!shipping)
   }
 
-  const filterData = {company, category, search, shipping};
+  const filterData = {company, category, search, shipping, price};
  
 
 
@@ -74,8 +85,10 @@ useSingleProduct(dataFilter)
 }
 
   return(
-    <AppContext.Provider value={{axiosData, theme, useTheme, singleProductHandle, singleProduct, 
-    handleSearch, handleCategory, handleCompany, handleShipping, filterData}}>
+    <AppContext.Provider value={{
+      axiosData, theme, useTheme, singleProductHandle, singleProduct, 
+    handleSearch, search, handleCategory, handleCompany, handleShipping, 
+    filterData, price, handleRange, isLoading}}>
       {children}
     </AppContext.Provider>
   )
