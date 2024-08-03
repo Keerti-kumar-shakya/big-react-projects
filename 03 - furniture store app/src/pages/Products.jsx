@@ -4,60 +4,72 @@ import { useState } from "react";
 import { useGlobalContext } from "../Context";
 
 const Products = () => {
-  const {axiosData, filterData, isLoading, search} = useGlobalContext();
+
+  const {axiosData, filterData, isLoading, uniqueData, price} = useGlobalContext();
+  console.log(uniqueData);
+  const [productFilterData, useProductFilterData] = useState();
+  const [count, setCount] = useState(0);
+ 
     const pages = 6;
     const data = PaginationData(pages)
-    const [productFilterData, useProductFilterData] = useState();
-    const showData = productFilterData? [productFilterData] : data;
+    const showData = productFilterData? [ productFilterData ] : data;
     const ProductFilter = axiosData.map((product) => product).flat();
 
+    console.log(productFilterData);
+    //console.log(showData);
+
     const filterAllData = () => {
+      useProductFilterData(uniqueData)
     
+    //console.log(search);
       // const filterDataFinal = axiosData.filter((product) => product.company === filterData.company)
- //useProductFilterData(filterDataFinal)
- console.log(productFilterData);
-      console.log(axiosData);
-      const filteredProducts = ProductFilter.filter(product => {
-        return (
-            product.category === filterData.category &&
-            product.company === filterData.company &&
-            product.shipping === filterData.shipping
-        );
-    });
-      //console.log(filteredProducts);
-      useProductFilterData(filteredProducts)
 
-     //category
-      if (filteredProducts.length === 0) {
-        const category = ProductFilter.filter((product) => {
-          return product.category === filterData.category
-        })
-        useProductFilterData(category);
-      }
+        
+    // const filteredProducts = ProductFilter.filter(product => {
+                 
+    //        return (  product.category === filterData.category &&
+    //           product.company === filterData.company &&
+    //           product.shipping === filterData.shipping
+    //           )
+            
+    //   });
 
-     //company
-      if (filteredProducts.length === 0) {
-        const company = ProductFilter.filter((product) => {
-          return product.company === filterData.company
-        })
-        useProductFilterData(company);
-      }
+    //   if (filteredProducts.length == 0) return;
 
-       //search name
-       if (filteredProducts.length === 0) {
-        const name = ProductFilter.filter((product) => product.name.toLowerCase().includes(search))
-        useProductFilterData(name);
-      }
+    //   console.log(filteredProducts);
+    //   useProductFilterData(filteredProducts)
 
-        //shipping
-        if (filteredProducts.length === 0) {
-          const shipping = ProductFilter.filter((product) => {
-            return product.shipping === filterData.shipping
-          })
-          useProductFilterData(shipping);
-        }
-     
+    //   if (filteredProducts.length === 0) {
+    //  const filterData2 = ProductFilter.filter((product) => {
+    //       return  product.category === filterData.category &&
+    //       product.company === filterData.company 
+    //     })
+    //     useProductFilterData(filterData2);
+    //   }
+
+
      }
+
+      // increase or decrease paginate
+
+ const increase = () => {
+  if (data.length -1 > count) {
+    setCount(prevCount => prevCount + 1)
+  }
+ }
+
+ const decrease = () => {
+  if (count > 0) {
+    setCount(prevCount => prevCount - 1)
+  }
+ }
+
+ const matchCountNumber = (e) => {
+ const data = e.target.dataset.id;
+
+ setCount(data)
+ }
+
   
     if (isLoading) {
       return <section>
@@ -69,19 +81,40 @@ const Products = () => {
   <section className='section-products'>
 
     <article className='filter-products'>
-           <FilterProducts filter = {filterAllData}  data = {data}/>
+           <FilterProducts 
+           filter = {filterAllData}  
+           data = {data}
+          
+           />
     </article>
 
     <article className="company-products-details">
-          <ProductsContainer showData = {showData}/>
+          <ProductsContainer 
+          showData = {showData}
+          count = {count}
+          />
     </article>
 
 
     <article className="all-btn-pagination">   
-      {showData.length > 1  &&<button className="prev-btn">prev</button>}
+      {showData.length > 1  && <button 
+      className="prev-btn"
+      onClick={() => decrease()}
+      >prev
+      </button>}
        {showData.length > 1 && showData.map((_, index) => 
-       <button key={index} className="btn-number">{showData.length > 1 && index + 1}</button>)}
-      {showData.length > 1 && <button className="next-btn">next</button>}
+       <button 
+       key={index} 
+       className="btn-number"
+       data-id = {index}
+       onClick={(e) => matchCountNumber(e)}
+       >{showData.length > 1 && index + 1}
+       </button>)}
+      {showData.length > 1 && <button 
+      className="next-btn"
+      onClick={() => increase()}
+      >next
+      </button>}
     </article>
 
   </section>

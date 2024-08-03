@@ -11,6 +11,6 @@ const {axiosData} = useGlobalContext()
   }})
 
 
-  return newAxiosData
+  return newAxiosData;
 }
 

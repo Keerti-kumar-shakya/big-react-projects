@@ -5,7 +5,7 @@ import { useGlobalContext } from "../Context"
 const FilterProducts = ({filter}) => {
 
   const step = 10;
-  const maxPrice = 1000;
+  const maxPrice = 3000;
   
   const {axiosData, handleSearch, handleCategory, handleCompany, handleShipping, filterAllData, price, handleRange} = useGlobalContext();
   
@@ -14,7 +14,6 @@ const FilterProducts = ({filter}) => {
   const productCompany = ['all', ...new Set(axiosData.map((product) => product.company))];
  
   return (
-
     <div className="filter-input-container" >
       {/* search product */}
       <div className="search-input">
@@ -71,7 +70,7 @@ const FilterProducts = ({filter}) => {
         />
         <div className="range-para">
           <p className="range-min">0</p>
-          <p className="range-max">$1000.00</p>
+          <p className="range-max">$3000.00</p>
         </div>
       </div>
 
@@ -88,7 +87,9 @@ const FilterProducts = ({filter}) => {
       <button className="search-btn"
       onClick={filter}
       >search</button>
-      <Link to = '/products' className = "reset-btn">
+      <Link to = '/products' className = "reset-btn"
+       onClick={() => location.reload()}
+      >
           reset
       </Link>
     </div>

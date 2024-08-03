@@ -34,7 +34,9 @@ export const AppProvider = ({children}) => {
    }, [])
 
 // filter all
-  const [search, useSearch] = useState(null);
+ const ProductFilter = axiosData.map((product) => product).flat();
+ const [uniqueData, setUniqueData] = useState(null)
+  const [search, useSearch] = useState();
   const [category, useCategory] = useState('all');
   const [company, useCompany] = useState('all');
   const [price, usePrice] = useState(0);
@@ -45,50 +47,68 @@ export const AppProvider = ({children}) => {
   const handleSearch = (e) => {
     //e.preventDefault()
     const data = e.target.value;
-    useSearch(data)
+    const name = ProductFilter.filter((product) => product.name.toLowerCase().includes(data))
+    useSearch(name)
+    setUniqueData(name)
   }
   
   const handleCategory = (e) => {
     //e.preventDefault()
     const data = e.target.value;
+    const category = ProductFilter.filter((product) => {
+      return product.category === data;
+    })
     useCategory(data)
+    setUniqueData(category)
   }
   
   const handleCompany = (e) => {
     //e.preventDefault()
     const data = e.target.value;
+    const company = ProductFilter.filter((product) => {
+         
+      return product.company === data;
+    })
     useCompany(data)
+    setUniqueData(company)
   }
 
   const handleRange = (e) => {
     //e.preventDefault()
-    const data = e.target.value;
-    usePrice(data)
+    const data = parseInt(e.target.value);
+ 
+    const range = ProductFilter.filter((product) => Math.ceil((product.price)/100) <= data)
+
+    usePrice(data);
+    setUniqueData(range)
   }
   
   const handleShipping = () => {
-    //e.preventDefault()    
-    useShipping(!shipping)
+    //e.preventDefault()  
+    const data = !shipping;
+    useShipping(data)
+
+    const shippingData = ProductFilter.filter((product) => {
+      
+      return product.shipping === data;
+    })
+    console.log(shippingData, data);
+    setUniqueData(shippingData);  
   }
 
   const filterData = {company, category, search, shipping, price};
- 
-
-
-
 
  const singleProductHandle = (e) => {
   const data = e.currentTarget.dataset.link;
-const dataFilter = axiosData.filter((product) => product.id === data);
-useSingleProduct(dataFilter)
-
+  const dataFilter = axiosData.filter((product) => product.id === data);
+  useSingleProduct(dataFilter)
 }
 
   return(
     <AppContext.Provider value={{
       axiosData, theme, useTheme, singleProductHandle, singleProduct, 
     handleSearch, search, handleCategory, handleCompany, handleShipping, 
-    filterData, price, handleRange, isLoading}}>
+    filterData, price, handleRange, isLoading, uniqueData}}>
       {children}
     </AppContext.Provider>
   )

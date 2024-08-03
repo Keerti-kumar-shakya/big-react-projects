@@ -1,13 +1,13 @@
 import { useGlobalContext } from "../Context";
 
 
-const ProductGrid = ({finalData}) => {
+const ProductGrid = ({finalData, count}) => {
 
-  console.log(finalData);
+  //console.log(finalData);
 
   const {theme} = useGlobalContext();
   
-  const displayData = finalData[0];
+  const displayData = finalData[count];
   return (
 
 <div className="products-grid-container">

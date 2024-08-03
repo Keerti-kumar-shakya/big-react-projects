@@ -4,13 +4,13 @@ import { useState } from 'react';
 import ProductGrid from './ProductGrid';
 import ProductList from './ProductList';
 
-const ProductsContainer = ({showData}) => {
+const ProductsContainer = ({showData, count}) => {
   const [styleContainer, useStyleContainer] = useState(false);
   const {theme} = useGlobalContext();
 
  const totalProduct = showData.map((product) => product).flat();
  
- console.log(totalProduct);
+ //console.log(totalProduct);
 
   return (
    <div className="product-container">
@@ -38,7 +38,10 @@ const ProductsContainer = ({showData}) => {
     </div>
 
     <div className="products-single-container">
-       {styleContainer? <ProductList /> : <ProductGrid finalData = {showData}/>}
+       {styleContainer? <ProductList /> : <ProductGrid  
+       count = {count} 
+       finalData = {showData}
+       />}
     </div>
    </div>
   )
