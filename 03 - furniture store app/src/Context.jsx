@@ -96,12 +96,20 @@ export const AppProvider = ({children}) => {
     setUniqueData(shippingData);  
   }
 
-  const filterData = {company, category, search, shipping, price};
+ const filterData = {company, category, search, shipping, price};
 
  const singleProductHandle = (e) => {
+
   const data = e.currentTarget.dataset.link;
   const dataFilter = axiosData.filter((product) => product.id === data);
   useSingleProduct(dataFilter)
+  console.log(dataFilter);
+}
+
+// click container data filter for single product display
+
+const singleProductData = () => {
+ 
 }
 
   return(

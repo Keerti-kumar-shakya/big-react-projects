@@ -1,7 +1,7 @@
 import  {priceModifier} from '../utils/pricing.js';
 import { useGlobalContext } from '../Context';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const top_products = [
   {id: 'recotY5Nh00DQFdkm', 
@@ -38,15 +38,16 @@ const TopSellProductSingleCard = () => {
   const handleMouseleave = () => {
     setIsHovered(false);
   }; 
-  const {theme, singleProductHandle} = useGlobalContext();
-
+  const {theme, singleProductHandle, singleProduct} = useGlobalContext();
+  console.log(singleProduct);
   return (
     <>
     {
       top_products.map((product, index) => {
         const {id, name, img, price} = product;
         return (
-     <Link to = {`products/id`} 
+     <NavLink to = 'products/id'
+
      onClick={singleProductHandle}
      data-link = {id}
      className='top-selling-product-single-card'
@@ -66,7 +67,7 @@ const TopSellProductSingleCard = () => {
           style={{color: theme && 'lightsalmon'}}
           >${priceModifier(price)}</div>
         </div>
-     </Link>
+     </NavLink>
         )
       })
     }

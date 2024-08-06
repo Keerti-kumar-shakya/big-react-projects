@@ -65,10 +65,11 @@ const Products = () => {
  }
 
  const matchCountNumber = (e) => {
- const data = e.target.dataset.id;
-
+ const data = parseInt(e.target.dataset.id);
  setCount(data)
  }
+
+
 
   
     if (isLoading) {
@@ -105,7 +106,7 @@ const Products = () => {
        {showData.length > 1 && showData.map((_, index) => 
        <button 
        key={index} 
-       className="btn-number"
+       className= {`btn-number ${count === index? 'hight-light-btn' : ''}`}
        data-id = {index}
        onClick={(e) => matchCountNumber(e)}
        >{showData.length > 1 && index + 1}

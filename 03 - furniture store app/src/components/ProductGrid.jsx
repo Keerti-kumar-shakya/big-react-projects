@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useGlobalContext } from "../Context";
 
 
@@ -10,11 +11,14 @@ const ProductGrid = ({finalData, count}) => {
   const displayData = finalData[count];
   return (
 
-<div className="products-grid-container">
+<div to='id' 
+className="products-grid-container"
+>
 
-    {displayData.map((product) => <div 
+    {displayData.map((product) => <Link to='id' 
 
     className={`single-grid-container ${theme && 'grid'}`}
+    data-id = {product.id}
     style={{backgroundColor: theme && 'transparent'}}
     key={product.id}
     >
@@ -27,7 +31,7 @@ const ProductGrid = ({finalData, count}) => {
       <p className="grid-product-name" style={{color: theme && 'white'}}>{product.name}</p>
       <p className="grid-product-price" style={{color: theme && 'lightgreen'}}>${Math.ceil(product.price/100).toFixed(2)}</p>
     </div>
-   </div>
+   </Link>
     )}
 </div>
     

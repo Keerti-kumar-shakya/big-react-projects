@@ -38,7 +38,12 @@ const ProductsContainer = ({showData, count}) => {
     </div>
 
     <div className="products-single-container">
-       {styleContainer? <ProductList /> : <ProductGrid  
+       {styleContainer? <ProductList 
+       count = {count} 
+       finalData = {showData}
+       /> 
+       : 
+       <ProductGrid  
        count = {count} 
        finalData = {showData}
        />}
