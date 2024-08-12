@@ -3,13 +3,15 @@ import { useGlobalContext } from "../Context";
 import  {priceModifier} from '../utils/pricing.js'
 
 const ProductList = ({finalData, count}) => {
-  const {theme} = useGlobalContext();
+  const {theme, singleProductData} = useGlobalContext();
   
   const displayData = finalData[count];
 
   return (
     <div  className="product-list-container">
       {displayData.map((product) => <Link to='id' className="single-product-list-container active"
+      onClick={(e) => singleProductData(e)}
+      data-id = {product.id}
       key={product.id}
       >
       <div className="product-list-details">

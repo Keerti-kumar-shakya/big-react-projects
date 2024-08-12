@@ -16,9 +16,7 @@ const FeaturedBestProduct = () => {
       <div className='underline' ></div>
 
       <div className="top-selling-product-display">
-        <TopSellProductSingleCard
-      
-         
+        <TopSellProductSingleCard       
         />
       </div>
     </article>

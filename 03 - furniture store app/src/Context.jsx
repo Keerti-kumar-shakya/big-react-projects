@@ -13,7 +13,6 @@ export const AppProvider = ({children}) => {
 
   const [theme, useTheme] = useState(false);
   const [axiosData, setAxiosData] = useState(initial_data)
-  const [singleProduct, useSingleProduct] = useState(initial_data);
   const [isLoading, setIsLoading] = useState(false);
 
   const request = async() => {
@@ -98,25 +97,39 @@ export const AppProvider = ({children}) => {
 
  const filterData = {company, category, search, shipping, price};
 
- const singleProductHandle = (e) => {
+// click container data filter for single product display
+const [cartData, setCartData] = useState(initial_data)
+const [cart, setCart] = useState(() => {
+  const savedCart = localStorage.getItem('cart');
+  return savedCart ? JSON.parse(savedCart) : [];
+});
 
-  const data = e.currentTarget.dataset.link;
-  const dataFilter = axiosData.filter((product) => product.id === data);
-  useSingleProduct(dataFilter)
-  console.log(dataFilter);
+
+ // Save cart state to localStorage whenever it changes
+ useEffect(() => {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}, [cart]);
+
+console.log(cart);
+const [selectColor, setSelectColor] = useState('');
+const [inputQuantity, SetInputQuantity] = useState('');
+console.log(selectColor, inputQuantity);
+const singleProductData = (e) => {
+  const data = e.currentTarget.dataset.id;
+  const cartFilterData = axiosData.find((product) => product.id === data);
+  setCartData([cartFilterData]);
 }
 
-// click container data filter for single product display
+const cartDisplay = () => {
 
-const singleProductData = () => {
- 
+  setCart(prevData => [...prevData, cartData.map(item => ({...item, selectColor, inputQuantity}))].flat());
 }
 
   return(
     <AppContext.Provider value={{
-      axiosData, theme, useTheme, singleProductHandle, singleProduct, 
-    handleSearch, search, handleCategory, handleCompany, handleShipping, 
-    filterData, price, handleRange, isLoading, uniqueData}}>
+      axiosData, theme, useTheme, handleSearch, search, handleCategory, handleCompany, handleShipping, 
+    filterData, price, handleRange, isLoading, uniqueData, singleProductData, setSelectColor, selectColor, 
+    SetInputQuantity, inputQuantity, cartData, cartDisplay, cart, setCart}}>
       {children}
     </AppContext.Provider>
   )

@@ -6,18 +6,19 @@ const ProductGrid = ({finalData, count}) => {
 
   //console.log(finalData);
 
-  const {theme} = useGlobalContext();
+  const {theme, singleProductData} = useGlobalContext();
   
   const displayData = finalData[count];
+
   return (
 
-<div to='id' 
-className="products-grid-container"
->
+  <div to='id' 
+  className="products-grid-container"
+  >
 
     {displayData.map((product) => <Link to='id' 
-
     className={`single-grid-container ${theme && 'grid'}`}
+    onClick={(e) => singleProductData(e)}
     data-id = {product.id}
     style={{backgroundColor: theme && 'transparent'}}
     key={product.id}
@@ -33,7 +34,7 @@ className="products-grid-container"
     </div>
    </Link>
     )}
-</div>
+  </div>
     
     
   )

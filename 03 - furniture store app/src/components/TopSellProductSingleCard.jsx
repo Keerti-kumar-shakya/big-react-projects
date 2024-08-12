@@ -2,32 +2,17 @@ import  {priceModifier} from '../utils/pricing.js';
 import { useGlobalContext } from '../Context';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { PaginationData } from '../pagination.js';
 
-const top_products = [
-  {id: 'recotY5Nh00DQFdkm', 
-   name: 'dining table',
-   img: 'https://www.course-api.com/images/store/product-5.jpeg',
-   price: '42999'
-  },
-
-  {id: 'rec1Ntk7siEEW9ha1',
-  name: 'emperor bed', 
-   img: 'https://www.course-api.com/images/store/product-6.jpeg',
-   price: '23999'
-  },
-
-  {id: 'recoW8ecgjtKx2Sj2',
-   name: 'leather chair', 
-   img: 'https://www.course-api.com/images/store/product-9.jpeg',
-   price: '20099'
-  }
-
-]
 
 
 const TopSellProductSingleCard = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [compHover, setComHover] = useState(0)
+  const [compHover, setComHover] = useState(0);
+
+  const page = 3;
+  const dataPage = PaginationData(page)
+  console.log(dataPage);
 
   const handleMouseEnter = (e) => {
     setIsHovered(true);
@@ -38,20 +23,22 @@ const TopSellProductSingleCard = () => {
   const handleMouseleave = () => {
     setIsHovered(false);
   }; 
-  const {theme, singleProductHandle, singleProduct} = useGlobalContext();
-  console.log(singleProduct);
+  const {theme, singleProductData} = useGlobalContext();
+
+
+ 
   return (
     <>
-    {
-      top_products.map((product, index) => {
-        const {id, name, img, price} = product;
+    { 
+      dataPage[0].map((product, index) => {
+        const {id, name, image, price} = product;
         return (
      <NavLink to = 'products/id'
 
-     onClick={singleProductHandle}
+     onClick={(e) => singleProductData(e)}
      data-link = {id}
      className='top-selling-product-single-card'
-     data-id = {index}
+     data-id = {product.id}
      onMouseEnter={handleMouseEnter}
      onMouseLeave={handleMouseleave}
      key={id}
@@ -60,7 +47,7 @@ const TopSellProductSingleCard = () => {
           }}
            
      >
-      <img className='selling-image' src= {img} />
+      <img className='selling-image' src= {image} />
         <div className="name-price-container">
           <div className="top-selling-product-name" style={{color: theme && 'white'}}>{name}</div>
           <div className="top-selling-product-price"
