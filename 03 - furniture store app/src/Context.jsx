@@ -105,10 +105,6 @@ const [cart, setCart] = useState(() => {
 });
 
 
- // Save cart state to localStorage whenever it changes
- useEffect(() => {
-  localStorage.setItem('cart', JSON.stringify(cart));
-}, [cart]);
 
 console.log(cart);
 const [selectColor, setSelectColor] = useState('');
@@ -125,11 +121,49 @@ const cartDisplay = () => {
   setCart(prevData => [...prevData, cartData.map(item => ({...item, selectColor, inputQuantity}))].flat());
 }
 
+const cartRemove = (e) => {
+  const dataId = e.target.dataset.id;
+  const remove = cart.filter((product) => product.id !== dataId);
+  setCart(remove)
+}
+
+const decreaseQuantity = (e) => {
+  const dataId = e.target.dataset.id;
+  const remove = cart.map((product) => {
+
+    if (product.id === dataId) {
+      product.inputQuantity--;
+    }
+    return product;
+  });
+
+  setCart(remove)
+}
+
+const onChangeHandle = (e) => {
+  const dataId = e.target.dataset.id;
+  console.log(dataId);
+
+  const updatedCart = cart.map((product) => {
+    if (product.id === dataId) {
+      product.inputQuantity = e.target.value;
+    }
+    return product;
+  });
+  setCart(updatedCart)
+  
+}
+
+ // Save cart state to localStorage whenever it changes
+ useEffect(() => {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}, [cart]);
+
   return(
     <AppContext.Provider value={{
       axiosData, theme, useTheme, handleSearch, search, handleCategory, handleCompany, handleShipping, 
     filterData, price, handleRange, isLoading, uniqueData, singleProductData, setSelectColor, selectColor, 
-    SetInputQuantity, inputQuantity, cartData, cartDisplay, cart, setCart}}>
+    SetInputQuantity, inputQuantity, cartData, cartDisplay, cart, setCart, cartRemove, onChangeHandle, decreaseQuantity}}>
       {children}
     </AppContext.Provider>
   )
