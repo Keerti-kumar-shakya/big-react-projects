@@ -10,7 +10,7 @@ const CheckoutPricing = () => {
 
 const totalPrice = cart.reduce((currentPrice, allPrice) => currentPrice + allPrice.price * allPrice.inputQuantity ,0);
 
-const shipping = 500;
+const shipping = cart.length === 0? 0: 500;
  const tax =(totalPrice)*10/100
 
  const orderTotal = totalPrice + tax + shipping;
@@ -26,7 +26,7 @@ const shipping = 500;
         
 
         <div className="checkout-shipping" style={{color: theme && 'white'}}>shipping 
-        <span className="check-shipping" style={{color: theme && 'white'}}>$5.00</span>
+        <span className="check-shipping" style={{color: theme && 'white'}}>${priceModifier(shipping)}</span>
         </div>
        
 

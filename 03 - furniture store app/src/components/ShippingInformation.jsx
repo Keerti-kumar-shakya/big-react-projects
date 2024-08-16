@@ -52,7 +52,7 @@ const ShippingInformation = () => {
           placeOrderData()
           toast.success('Order Placed Successfully')
         } else {
-          toast.error('This error is due to required fields not filled as well as product not selected')
+          toast.error('This error occur due to required fields not filled as well as product not selected')
         }
         return;
       }}

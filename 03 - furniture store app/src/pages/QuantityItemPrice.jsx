@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useGlobalContext } from "../Context";
 import { priceModifier } from "../utils/pricing";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const QuantityItemPrice = () => {
 const [isHover, setIsHOver] = useState(false)
@@ -17,13 +19,13 @@ const [isHover, setIsHOver] = useState(false)
 
 const totalPrice = cart.reduce((currentPrice, allPrice) => currentPrice + allPrice.price * allPrice.inputQuantity ,0);
 
-const shipping = 500;
+const shipping = cart.length === 0? 0: 500;
  const tax =(totalPrice)*10/100
 
  const orderTotal = totalPrice + tax + shipping;
   return (
 
-    <>
+    <div className="total-quantity-price-btn-container">
     <div className="total-quantity-price-container" style={{backgroundColor: theme && 'rgba(0,0,0,0.3)'}}>
       <div className="cart-total-price-tax-container">
 
@@ -33,7 +35,7 @@ const shipping = 500;
         
 
         <div className="cart-shipping" style={{color: theme && 'white'}}>shipping 
-        <span className="shipping" style={{color: theme && 'white'}}>$5.00</span>
+        <span className="shipping" style={{color: theme && 'white'}}>${priceModifier(shipping)}</span>
         </div>
        
 
@@ -48,7 +50,12 @@ const shipping = 500;
 
     </div>
 
-      <button 
+     {cart.length === 0? <button 
+     className="btn-checkout"
+     onClick={() => toast.error('Please select the items')}
+     >proceed to checkout</button> : 
+     
+      <a href = '/checkout'
       className= 'btn-checkout'
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
@@ -56,9 +63,12 @@ const shipping = 500;
        color: theme && 'black',
        borderColor:(theme && isHover) && '#FF7AC6',
        transition: 'all 0.35s ease-in-out'
+
       }}     
-      >proceed to checkout</button>
-    </>
+      >proceed to checkout</a>
+     }
+     
+    </div>
     
   )
 }

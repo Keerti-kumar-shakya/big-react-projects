@@ -747,6 +747,7 @@ background-color:#BF95F9;
 
 .cart-price-container{
   border: 1px solid blue;
+  
 }
 
 .single-cart-items-container{
@@ -850,6 +851,10 @@ border-radius: 0.6rem;
 
 /* cart pricing shipping details */
 
+.total-quantity-price-btn-container{
+  display: grid;
+}
+
 .total-quantity-price-container{
   border: 1px solid lightslategray;
   min-height: 220px;
@@ -892,6 +897,7 @@ border-radius: 0.6rem;
 }
 
 .btn-checkout{
+  border: 1px solid black;
   margin-top: 40px;
   width: 100%;
   padding: 10px;
@@ -904,6 +910,7 @@ border-radius: 0.6rem;
   color: rgb(228, 223, 223);
   transition: 0.35s;
  cursor: pointer;
+ text-align: center;
 }
 
 .btn-checkout:hover{
