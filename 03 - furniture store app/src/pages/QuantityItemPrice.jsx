@@ -63,7 +63,6 @@ const shipping = cart.length === 0? 0: 500;
        color: theme && 'black',
        borderColor:(theme && isHover) && '#FF7AC6',
        transition: 'all 0.35s ease-in-out'
-
       }}     
       >proceed to checkout</a>
      }

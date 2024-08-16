@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { useGlobalContext } from "../Context"
 import { PaginationData } from "../pagination";
 
 const OrderDetails = () => {
 
+  const [count, setCount] = useState(0);
+ console.log(count);
   const {placeOrder} = useGlobalContext();
  console.log(placeOrder);
 
@@ -10,7 +13,30 @@ const OrderDetails = () => {
 
  const data = PaginationData(page, placeOrder)
  
-console.log(data);
+ console.log(data);
+
+
+ const onClickHandle = (e) => {
+ const data = parseInt(e.target.dataset.id);
+ setCount(data)
+ }
+
+
+ const prevBtn = () => {
+ 
+   if (count > 0) {
+     setCount(prevCount => prevCount - 1)
+   }
+ }
+
+
+const nextBtn = () => {
+
+  if (data.length - 1 > count) {
+    
+    setCount(prevCount => prevCount + 1)
+  }
+}
 
 
   // const {date, price, productNameColor, quantity, userAddress, userName} = orders;
@@ -22,7 +48,7 @@ console.log(data);
   return (
     <>
     {
-      data[0].map((product, index)  => <div className="single-order-products-shipping-details-container"
+      data[count].map((product, index)  => <div className="single-order-products-shipping-details-container"
       key={index}
       >
       <div className="current-order-name">{product.userName}</div>
@@ -32,6 +58,24 @@ console.log(data);
       <div className="current-order-date">{product.date}</div>
     </div>)
     }
+
+    <div className="order-btn-container">
+      <button 
+      className="order-btn-prev"
+      onClick={prevBtn}
+      >Prev</button> 
+      {data.map((_, index) => <button 
+      className= {`order-btn-index ${count === index?'active-order-btn-index' : ''}`}
+       data-id = {index}
+        onClick={(e) => onClickHandle(e)}
+      key={index}>
+        {index + 1}
+        </button>)}
+      <button 
+      className="order-btn-next"
+      onClick={nextBtn}
+      >Next</button>
+    </div>
     </>
    
   )
