@@ -1,7 +1,6 @@
-import { useGlobalContext } from "./Context";
 
-export function PaginationData(pages) {
-const {axiosData} = useGlobalContext()
+export function PaginationData(pages, axiosData) {
+
 //console.log(axiosData);
   const numberOfPages = Math.ceil(axiosData.length/pages);
 

@@ -11,7 +11,7 @@ const Products = () => {
   const [count, setCount] = useState(0);
  
     const pages = 6;
-    const data = PaginationData(pages)
+    const data = PaginationData(pages, axiosData)
     const showData = productFilterData? [ productFilterData ] : data;
     const ProductFilter = axiosData.map((product) => product).flat();
 

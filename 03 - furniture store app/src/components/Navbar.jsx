@@ -6,7 +6,11 @@ import { useGlobalContext } from "../Context";
 
 const Navbar = () => {
 
-  const {theme, useTheme} = useGlobalContext();
+  const {theme, useTheme, cart} = useGlobalContext();
+
+  const cartQuantity = cart.reduce((currentQuantity, allQuantity) => currentQuantity + parseInt(allQuantity.inputQuantity),0)
+
+
 
   const putColor = theme? 'rgb(30, 30, 30)' : 'rgb( 220, 220, 220)';
   
@@ -53,7 +57,7 @@ const Navbar = () => {
       <NavLink className= 'link' to= 'cart'>
         <IoCartOutline/>
         <div className="total-number-product">
-          0
+          {cartQuantity}
         </div>
       </NavLink>
       </div>

@@ -48,13 +48,14 @@ const shipping = 500;
 
     </div>
 
-      <button className='btn-checkout'
+      <button 
+      className= 'btn-checkout'
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
-      style={{backgroundColor: theme && isHover? '#FF7AC6' : 'rgb(148, 107, 91)',
+      style={{backgroundColor: (theme && isHover) && '#FF7AC6',
        color: theme && 'black',
-       borderColor:theme && isHover? '#FF7AC6' : 'rgb(148, 107, 91)',
-       transition:theme && 'all 0.35s ease-in-out'
+       borderColor:(theme && isHover) && '#FF7AC6',
+       transition: 'all 0.35s ease-in-out'
       }}     
       >proceed to checkout</button>
     </>

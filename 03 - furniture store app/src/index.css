@@ -907,7 +907,214 @@ border-radius: 0.6rem;
 }
 
 .btn-checkout:hover{
-  background-color: rgb(24, 61, 82);
- 
+  background-color: #FFB6C1;
+  color: #2f3f53;
+  border: 1px solid #FFB6C1;
 }
 
+/************************* checkout section ************************/
+
+.checkout-section{
+ border: 1px solid black;
+}
+
+.checkout-shipping-price-container{
+  border: 1px solid red;
+  padding-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.underline{
+  border: 0.1rem inset rgb(252, 254, 255);
+}
+
+.checkout-header{
+  font-size: 30px;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #394E6A;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+}
+
+.shipping-information-container{
+ border: 1px solid blue;
+ display: grid;
+ row-gap: 25px;
+}
+
+.shipping-para{
+ font-size: 20px;
+ text-transform: capitalize;
+ color: #394E6A;
+ font-weight: 500;
+}
+
+.checkout-price-container{
+  border: 1px solid orchid;
+}
+
+.checkout-user-name,
+.checkout-user-address{
+ display: grid;
+ row-gap: 5px;
+}
+
+.user-name,
+.user-address{
+  text-transform: capitalize;
+  font-size: 14px;
+}
+
+.input-name,
+.input-address{
+  border: 1px solid rgb(213, 217, 221); 
+  width: 100%;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 0.4rem;
+}
+
+.btn-shipping-checkout{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  background-color: #057AFF;
+  border: 1px solid #057AFF;
+  color: rgb(228, 223, 223);
+ cursor: pointer;
+}
+
+.btn-shipping-checkout:hover{
+  background-color: #FFB6C1;
+  color: #2f3f53;
+  border: 1px solid #FFB6C1;
+}
+
+/* checkout pricing shipping details */
+
+.checkout-price-container{
+  border: 1px solid lightslategray;
+  padding: 20px;
+  border-radius: 0.5rem;
+  background-color: #F0F6FF;
+}
+
+.checkout-sub-total, 
+.checkout-shipping,
+.checkout-tax
+{
+  border-bottom: 1px solid rgb(197, 204, 211);
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  text-transform: capitalize;
+  padding: 8px 0px 8px 0px;
+  color: #2f3f53;
+}
+
+.check-sub-total-price,
+.check-shipping,
+.check-tax {
+  color: #2f3f53;
+  font-weight: 500;
+}
+
+.checkout-order-container{
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  color: #2f3f53;
+}
+
+.checkout-order-total{
+  font-weight: 500;
+  color: #2f3f53;
+}
+
+/*********************** order section *************************/
+
+.order-section{
+  border: 1px solid black;
+}
+
+.order-heading{
+  text-transform: capitalize;
+  font-weight: 500;
+  color: #2f3f53;
+  letter-spacing: 1px;
+  padding-bottom:20px;
+}
+
+.order-underline{
+  border: 1px inset rgb(245, 246, 247);
+}
+
+.order-total-quantity{
+  margin-top: 30px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+  color: #2f3f53;
+}
+
+.order-products-shipping-heading-container{
+border: 1px solid black;
+display: grid;
+grid-template-columns: 2fr 2.5fr 1fr 1fr 1.5fr;
+padding-bottom: 10px;
+}
+
+.order-name,
+.order-address,
+.order-products,
+.order-cost,
+.order-date{
+
+  text-transform: capitalize;
+  font-size: 14px;
+  color: #8b8b8b;
+  font-weight: 500;
+}
+
+.order-products-shipping-details-container{
+  border: 1px solid violet;
+}
+
+.single-order-products-shipping-details-container{
+  padding: 6px 0px 6px 0px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 2fr 2.5fr 1fr 1fr 1.5fr;
+  padding-bottom: 10px;
+}
+
+.current-order-name,
+.current-order-address,
+.current-order-products,
+.current-order-cost{
+  color: #2f3f53;
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.current-order-date{
+  color: #2f3f53;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.order-empty{
+  display: grid;
+  place-items: center;
+  height: 50vh;
+  font-weight: 500;
+  font-size: 35px;
+  color: #2f3f53;
+}

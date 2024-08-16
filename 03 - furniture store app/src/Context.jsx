@@ -2,7 +2,10 @@ import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { initial_data } from "./data/initialData";
-
+import { priceModifier } from "./utils/pricing";
+import day from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+day.extend(advancedFormat);
 
 const url = `https://www.course-api.com/react-store-products`;
 
@@ -11,9 +14,20 @@ const AppContext = createContext();
 
 export const AppProvider = ({children}) => {
 
-  const [theme, useTheme] = useState(false);
+  const [theme, useTheme] = useState(
+    () => {
+      const themeCart = localStorage.getItem('theme');
+      return themeCart ? JSON.parse(themeCart) : false;}
+  );
   const [axiosData, setAxiosData] = useState(initial_data)
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+
+    localStorage.setItem('theme', JSON.stringify(theme));
+    
+  }, [theme]);
+  
 
   const request = async() => {
     setIsLoading(true)
@@ -159,11 +173,73 @@ const onChangeHandle = (e) => {
   localStorage.setItem('cart', JSON.stringify(cart));
 }, [cart]);
 
+// checkout place your order
+const [placeOrder, setPlaceOrder] = useState(
+  () => {
+    const savedOrder = localStorage.getItem('placeOrder');
+    return savedOrder ? JSON.parse(savedOrder) : [];
+  }
+);
+
+const [inputUserName, SetInputUserName] = useState('');
+const [inputUserAddress, SetInputUserAddress] = useState('');
+
+
+const placeOrderData = () => {
+let data = []
+
+// quantity
+const orderQuantity = cart.reduce((curr, items) => curr + parseInt(items.inputQuantity),0);
+
+// quantity end
+
+// price
+let orderPrice = 0;
+
+cart.map((product) => {
+ return orderPrice += (parseInt(product.price) * parseInt(product.inputQuantity))
+});
+orderPrice = orderPrice + (orderPrice*10/100) + 500;
+
+// price end
+
+// product name color
+
+const products = cart.map((product) => {
+ return {product: product.name, color: product.selectColor}
+})
+
+// date
+
+const date = day().format('hh:mm a - MMM Do, YYYY');
+
+
+data.push({
+  productsNameColor:products,
+  quantity: orderQuantity,
+  price: priceModifier(orderPrice),
+  userName: inputUserName,
+  userAddress: inputUserAddress,
+  date: date
+})
+
+ setPlaceOrder(prevData => [...prevData, data].flat());
+ setCart([]);
+ SetInputUserName('');
+ SetInputUserAddress('');
+}
+
+useEffect(() => {
+  localStorage.setItem('placeOrder', JSON.stringify(placeOrder));
+}, [placeOrder]);
+
+
+
   return(
     <AppContext.Provider value={{
       axiosData, theme, useTheme, handleSearch, search, handleCategory, handleCompany, handleShipping, 
-    filterData, price, handleRange, isLoading, uniqueData, singleProductData, setSelectColor, selectColor, 
-    SetInputQuantity, inputQuantity, cartData, cartDisplay, cart, setCart, cartRemove, onChangeHandle, decreaseQuantity}}>
+      filterData, price, handleRange, isLoading, uniqueData, singleProductData, setSelectColor, selectColor, 
+      SetInputQuantity, inputQuantity, cartData, cartDisplay, cart, setCart, cartRemove, onChangeHandle, decreaseQuantity, placeOrderData,SetInputUserName, SetInputUserAddress, placeOrder, inputUserName, inputUserAddress}}>
       {children}
     </AppContext.Provider>
   )

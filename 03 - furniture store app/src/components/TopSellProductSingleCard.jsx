@@ -9,9 +9,10 @@ import { PaginationData } from '../pagination.js';
 const TopSellProductSingleCard = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [compHover, setComHover] = useState(0);
+  const {theme, singleProductData, axiosData} = useGlobalContext();
 
   const page = 3;
-  const dataPage = PaginationData(page)
+  const dataPage = PaginationData(page, axiosData)
   console.log(dataPage);
 
   const handleMouseEnter = (e) => {
@@ -23,7 +24,6 @@ const TopSellProductSingleCard = () => {
   const handleMouseleave = () => {
     setIsHovered(false);
   }; 
-  const {theme, singleProductData} = useGlobalContext();
 
 
  

@@ -6,3 +6,6 @@ export {default as ProductsContainer} from './ProductsContainer'
 export {default as FilterProducts} from './FilterProducts';
 export {default as ProductGrid} from './ProductGrid';
 export {default as ProductList} from './ProductList';
+export {default as ShippingInformation} from './ShippingInformation';
+export {default as CheckoutPricing} from './CheckoutPricing';
+export {default as OrderDetails} from './OrderDetails';
