@@ -50,12 +50,12 @@ const Navbar = () => {
 
      <article className="theme-cart-logo-container">
       <button className="theme-changer" onClick={() => useTheme(!theme)}>
-        {theme? <IoMoonOutline/> : <IoSunnyOutline/>}
+        {theme? <IoMoonOutline style={{color: theme && 'white'}}/> : <IoSunnyOutline/>}
       </button>
       
       <div className="cart" style={{color: theme? 'white': 'black'}}>
       <NavLink className= 'link' to= 'cart'>
-        <IoCartOutline/>
+        <IoCartOutline style={{color: theme && 'white'}}/>
         <div className="total-number-product">
           {cartQuantity}
         </div>

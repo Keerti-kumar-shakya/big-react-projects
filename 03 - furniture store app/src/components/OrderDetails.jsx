@@ -4,6 +4,8 @@ import { PaginationData } from "../pagination";
 
 const OrderDetails = () => {
 
+  const {theme} = useGlobalContext();
+
   const [count, setCount] = useState(0);
  console.log(count);
   const {placeOrder} = useGlobalContext();
@@ -51,11 +53,11 @@ const nextBtn = () => {
       data[count].map((product, index)  => <div className="single-order-products-shipping-details-container"
       key={index}
       >
-      <div className="current-order-name">{product.userName}</div>
-      <div className="current-order-address">{product.userAddress}</div>
-      <div className="current-order-products">{product.quantity}</div>
-      <div className="current-order-cost">${product.price}</div>
-      <div className="current-order-date">{product.date}</div>
+      <div className="current-order-name" style={{color: theme && 'white'}}>{product.userName}</div>
+      <div className="current-order-address" style={{color: theme && 'white'}}>{product.userAddress}</div>
+      <div className="current-order-products" style={{color: theme && 'white'}}>{product.quantity}</div>
+      <div className="current-order-cost" style={{color: theme && 'white'}}>${product.price}</div>
+      <div className="current-order-date" style={{color: theme && 'white'}}>{product.date}</div>
     </div>)
     }
 

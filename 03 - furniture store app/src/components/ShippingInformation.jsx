@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useGlobalContext } from "../Context";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const ShippingInformation = () => {
   const [isHover, setIsHOver] = useState(false)
@@ -43,7 +44,7 @@ const ShippingInformation = () => {
         />
       </div>
 
-    <button 
+    <Link to= '/orders'
     className="btn-shipping-checkout"
     onMouseEnter={onEnter}
       onMouseLeave={onLeave}
@@ -61,7 +62,7 @@ const ShippingInformation = () => {
        borderColor:(theme && isHover) && '#FF7AC6',
        transition: 'all 0.35s ease-in-out'}}
 
-    >place your order</button>
+    >place your order</Link>
     </div>
 
   </>
