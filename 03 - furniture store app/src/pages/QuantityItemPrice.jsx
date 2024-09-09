@@ -22,6 +22,7 @@ const totalPrice = cart.reduce((currentPrice, allPrice) => currentPrice + allPri
 const shipping = cart.length === 0? 0: 500;
  const tax =(totalPrice)*10/100
 
+
  const orderTotal = totalPrice + tax + shipping;
   return (
 
